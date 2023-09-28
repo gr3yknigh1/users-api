@@ -10,6 +10,7 @@ services:
       - db
   db:
     image: docker.io/postgres:16.0
+    restart: always
     ports:
       - 5432:5432
     networks:
