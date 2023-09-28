@@ -32,3 +32,31 @@ def create_user(db: Session, user: schemas.UserCreate):
     db.commit()
     db.refresh(db_user)
     return db_user
+
+
+def delete_user(db: Session, user: models.UserModel):
+    # TODO(gr3yknigh1): Find the way to pass user_id directry in order to
+    # bypass query duplication
+    db_user = db.query(models.UserModel).get(user.id)
+    db.delete(db_user)
+    db.commit()
+    return
+
+
+def update_user(
+    db: Session, updated_user: schemas.UserCreate, user: models.UserModel
+):
+    # TODO(gr3yknigh1): Find the way to pass user_id directry in order to
+    # bypass query duplication
+    db_user = (
+        db.query(models.UserModel)
+        .filter(models.UserModel.id == user.id)
+        .update(
+            {
+                "email": updated_user.email,
+                "password": updated_user.password,
+            }
+        )
+    )
+    db.commit()
+    return db_user
