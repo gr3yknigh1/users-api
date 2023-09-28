@@ -37,6 +37,9 @@ upgrade-buildsystem:
 install:
 	$(PYTHON) -m pip install .
 
+uninstall:
+	$(PYTHON) -m pip uninstall users-api --yes
+
 install-dev:
 	$(PYTHON) -m pip install --editable .
 
