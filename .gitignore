@@ -15,4 +15,7 @@ dist/
 .vscode/
 
 # Configuration
-.env
+*.env
+
+# Testing
+db/
