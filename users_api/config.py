@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import MutableMapping, Mapping, Any
+from typing import MutableMapping, Mapping, Any, Optional
 
 import os
 
@@ -9,8 +9,15 @@ load_dotenv(".env")
 
 REQURED_ENV_KEYS = ("USERS_API_HOST", "USERS_API_PORT")
 
+_config: Optional[Mapping[str, Any]] = None
+
 
 def read_env() -> Mapping[str, Any]:
+    global _config
+
+    if _config is not None:
+        return _config
+
     # TODO(gr3yknigh1): Move to config validation to sep function
     config: MutableMapping[str, Any] = os.environ
 
