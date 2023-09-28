@@ -1,0 +1,68 @@
+[project]
+name = "users-api"
+
+authors = [
+    {name = "Akkuzin Ilya", email = "gr3yknigh1@gmail.com"},
+]
+
+description = "API written in FastAPI"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "NoLicense"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+]
+dependencies = [
+    "fastapi",
+    "fastapi-sqlalchemy",
+    "pydantic",
+    "alembic",
+    "psycopg2-binary",
+    "uvicorn[standard]",
+    "python-dotenv",
+    "importlib-metadata; python_version<\"3.8\"",
+]
+
+dynamic = ["version"]
+
+[project.scripts]
+users-api = "users_api.__main__:main"
+
+[build-system]
+requires = [ "setuptools>=41", "wheel", "setuptools-git-versioning<2", ]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages]
+find = {namespaces = false}
+
+[tool.setuptools.package-data]
+"*" = ["py.typed"]
+
+[tool.setuptools-git-versioning]
+enabled = true
+starting_version = "0.0.0"
+template = "{tag}"
+dev_template = "{tag}.dev{ccount}+git.{sha}"
+dirty_template = "{tag}.dev{ccount}+git.{sha}.dirty"
+
+
+[tool.mypy]
+exclude = [
+    "setup.py"
+]
+
+[tool.black]
+line-length = 79
+target-versions = ["py311"]
+
+[tool.flake8]
+max-line-length = 79
+
+[tool.bandit]
+exclude = [
+    "setup.py",
+]
+
+[tool.bandit.assert_used]
+skips = ['*_test.py', '*/test_*.py']

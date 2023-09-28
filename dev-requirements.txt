@@ -1,0 +1,9 @@
+pytest
+mypy
+flake8
+Flake8-pyproject
+bandit
+bandit[toml]
+pre-commit
+black
+memray
