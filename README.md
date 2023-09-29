@@ -12,12 +12,6 @@ API written in FastAPI
 docker compose up
 ```
 
-* Docker image
-
-```shell
-docker run -it --expose 8000:8000 --mount=bind,src=./.env,dst=/app/.env <image-name>
-```
-
 ## Build
 
 * Docker image
@@ -46,3 +40,5 @@ python3 -m pip install \
     --upgrade build
 python3 -m build
 ```
+
+## Development
