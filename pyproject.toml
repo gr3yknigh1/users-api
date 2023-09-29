@@ -5,7 +5,7 @@ authors = [
     {name = "Akkuzin Ilya", email = "gr3yknigh1@gmail.com"},
 ]
 
-description = "API written in FastAPI"
+description = "Some users API written in FastAPI"
 readme = "README.md"
 requires-python = ">=3.11"
 license = {text = "NoLicense"}
