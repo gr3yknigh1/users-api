@@ -7,6 +7,7 @@ WORKDIR /app
 RUN : \
     && python3 -m pip install --no-cache-dir --break-system-packages --upgrade pip \
     && python3 -m pip install --no-cache-dir --break-system-packages  \
+        bcrypt \
         fastapi \
         fastapi-sqlalchemy \
         pydantic \
