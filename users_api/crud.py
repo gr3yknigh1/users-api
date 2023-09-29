@@ -1,7 +1,17 @@
 from __future__ import annotations
+
 from sqlalchemy.orm import Session
+import bcrypt
 
 from . import models, schemas
+
+
+def get_hashed_password(plain_text_password: str) -> bytes:
+    return bcrypt.hashpw(plain_text_password.encode(), bcrypt.gensalt())
+
+
+def check_password(plain_text_password, hashed_password):
+    return bcrypt.checkpw(plain_text_password, hashed_password)
 
 
 def get_user(db: Session, user_id: int):
@@ -25,9 +35,12 @@ def get_users(db: Session, *, offset=0, limit=100):
 
 
 def create_user(db: Session, user: schemas.UserCreate):
-    # TODO(gr3yknigh1): Implement basic hashing
-    fake_hashed_password = user.password.get_secret_value() + "notreallyhashed"
-    db_user = models.UserModel(email=user.email, password=fake_hashed_password)
+    db_user = models.UserModel(
+        email=user.email,
+        password=get_hashed_password(
+            user.password.get_secret_value()
+        ).decode(),
+    )
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
@@ -54,7 +67,9 @@ def update_user(
         .update(
             {
                 "email": updated_user.email,
-                "password": updated_user.password,
+                "password": get_hashed_password(
+                    updated_user.password.get_secret_value()
+                ).decode(),
             }
         )
     )
