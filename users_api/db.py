@@ -6,7 +6,7 @@ from .config import read_env
 
 config = read_env()
 
-# f"postgresql+psycopg2://
+
 SQLALCHEMY_DATABASE_URL = (
     "postgresql+psycopg2://{user}:{password}@{addr}:{port}/{db}".format(
         user=config["POSTGRES_USER"],
