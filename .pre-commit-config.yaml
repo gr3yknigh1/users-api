@@ -23,7 +23,7 @@ repos:
   rev: v1.5.1
   hooks:
   - id: mypy
-    additional_dependencies: [tokenize-rt==3.2.0]
+    additional_dependencies: [tokenize-rt==3.2.0, types-setuptools]
 
 - repo: https://github.com/PyCQA/flake8
   rev: 6.1.0

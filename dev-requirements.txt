@@ -6,4 +6,3 @@ bandit
 bandit[toml]
 pre-commit
 black
-memray
