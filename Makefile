@@ -9,6 +9,7 @@ PYTHON := python3
 SOURCES :=
 SOURCES += $(wildcard ./users_api/*.py)
 SOURCES += $(wildcard ./users_api/**/*.py)
+SOURCES += $(wildcard ./tests/*.py)
 
 DEV_REQUIREMENTS := ./dev-requirements.txt
 
@@ -20,18 +21,18 @@ setup:
 	$(MAKE) upgrade-buildsystem
 	$(MAKE) install-dev-requirements
 	$(MAKE) install-hooks
-	$(MAKE) install
+	$(MAKE) install-dev
 
 build:
 	$(PYTHON) -m build
 
 upgrade-buildsystem:
-	$(PYTHON) -m pip install \
+	$(PYTHON) -m pip install                \
 		--upgrade pip
-	$(PYTHON) -m pip install \
-		--upgrade setuptools \
+	$(PYTHON) -m pip install                \
+		--upgrade setuptools                \
 		--upgrade setuptools-git-versioning \
-		--upgrade wheel \
+		--upgrade wheel                     \
 		--upgrade build
 
 install:
