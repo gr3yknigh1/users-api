@@ -17,6 +17,7 @@ dependencies = [
     "fastapi",
     "fastapi-sqlalchemy",
     "pydantic",
+    "pydantic[email]",
     "alembic",
     "psycopg2-binary",
     "uvicorn[standard]",
