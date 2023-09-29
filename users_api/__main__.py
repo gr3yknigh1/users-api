@@ -3,12 +3,11 @@ from __future__ import annotations
 from pkg_resources import get_distribution, DistributionNotFound
 
 try:
-    __version__ = get_distribution("package-name").version
+    __version__ = get_distribution("users_api").version
 except DistributionNotFound:
-    __version__ = "0.0.1"
+    __version__ = "0.0.0"
 
 import logging
-import logging.config
 
 import uvicorn
 import fastapi
