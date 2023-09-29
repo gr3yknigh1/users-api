@@ -2,12 +2,20 @@
 
 API written in FastAPI
 
+> Note: Project was tested only with Podman (instead of Docker)
+
 ## Run
+
+* Docker compose
+
+```shell
+docker compose up
+```
 
 * Docker image
 
 ```shell
-docker run -it -p 8000:8000 --mount=bind,src=./.env,dst=/app/.env <image-name>
+docker run -it --expose 8000:8000 --mount=bind,src=./.env,dst=/app/.env <image-name>
 ```
 
 ## Build
@@ -15,7 +23,7 @@ docker run -it -p 8000:8000 --mount=bind,src=./.env,dst=/app/.env <image-name>
 * Docker image
 
 ```shell
-docker build .
+docker build . --tag <image-name>
 ```
 
 * Python wheel

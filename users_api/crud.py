@@ -60,3 +60,13 @@ def update_user(
     )
     db.commit()
     return db_user
+
+
+__all__ = (
+    "get_user",
+    "get_user_by_email",
+    "get_users",
+    "create_user",
+    "delete_user",
+    "update_user",
+)

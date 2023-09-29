@@ -1,25 +1,38 @@
-version: 3
+version: "3"
+
 services:
   app:
     build: .
     ports:
-      - 8000:8000
+      - "${USERS_API_PORT-8000}:8000"
     env_file:
       - .env
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+    networks:
+      - db-network
   db:
-    image: docker.io/postgres:16.0
+    image: postgres:16.0
     restart: always
     ports:
-      - 5432:5432
+      - "${POSTGRES_PORT:-5432}:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready --dbname $${POSTGRES_DB} --host=$${POSTGRES_ADDR} --port=$${POSTGRES_PORT} --username=$${POSTGRES_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     networks:
-      - postgres-network
+      - db-network
     env_file:
       - .env
     volumes:
-      - /tmp/db/:/var/lib/postgresql/data/
+      - db-data:/var/lib/postgresql/data/
 
 networks:
-  postgres-network:
+  db-network:
     driver: bridge
+
+volumes:
+  db-data:
+    driver: local

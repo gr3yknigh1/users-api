@@ -71,3 +71,6 @@ def update_user(
 @api_router.get("/health")
 def check_health():
     return "OK"
+
+
+__all__ = ("api_router",)
