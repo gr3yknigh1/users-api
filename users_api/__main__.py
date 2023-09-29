@@ -8,7 +8,6 @@ except DistributionNotFound:
     __version__ = "0.0.0"
 
 import logging
-import logging.config
 
 import uvicorn
 import fastapi
