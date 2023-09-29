@@ -22,8 +22,6 @@ def main() -> int:
         level=config.get("USERS_API_LOG_LEVEL", "INFO"),
         format="(%(threadName)s) :: %(name)s :: [%(levelname)s]: %(message)s",
     )
-    logger = logging.getLogger("users_api")
-    logger.debug(f"Config: {config!r}")
 
     uvicorn.run(
         app=app,
