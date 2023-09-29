@@ -21,7 +21,7 @@ setup:
 	$(MAKE) upgrade-buildsystem
 	$(MAKE) install-dev-requirements
 	$(MAKE) install-hooks
-	$(MAKE) install
+	$(MAKE) install-dev
 
 build:
 	$(PYTHON) -m build
