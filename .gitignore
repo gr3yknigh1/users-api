@@ -1,0 +1,21 @@
+# Python runtime
+__pycache__/
+
+# Python setuptools
+build/
+dist/
+*.egg-info/
+
+# Tooling
+.pytest_cache/
+.cache/
+.mypy_cache/
+
+# Editors
+.vscode/
+
+# Configuration
+*.env
+
+# Testing
+db/
